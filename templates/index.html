@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Lookup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        nav {
+            background: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/admin">Database Editor</a>  <!-- ✅ New Button -->
+    </nav>
+
+    <h1>Fleet Information Lookup</h1>
+    <input type="text" id="fleetNumber" placeholder="Enter Fleet Number or Reg">
+    <button onclick="searchFleet()">Search</button>
+    <div id="result"></div>
+    <script>
+    
+    let fleetDatabase = [];
+    async function loadFleets() {
+        try {
+            const response = await fetch('/fleets.json'); // ✅ Fetch from the correct directory
+            if (!response.ok) throw new Error('Fleet data not found');
+            fleetDatabase = await response.json();
+        } catch (error) {
+            console.error('Error loading fleet data:', error);
+        }
+    }
+
+    async function searchFleet() {
+        if (fleetDatabase.length === 0) {
+            await loadFleets();
+        }
+    
+        const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
+        const resultDiv = document.getElementById("result");
+    
+        const vehicle = fleetDatabase.find(item => 
+            item.fleetNumber.toLowerCase() === input || 
+            item.reg.toLowerCase() === input
+        );
+    
+        if (vehicle) {
+            resultDiv.innerHTML = `
+                <p>Fleet Number: ${vehicle.fleetNumber}</p>
+                <p>Reg: ${vehicle.reg}</p>
+                <p>Previous Reg: ${vehicle.previousReg}</p>
+                <p>Vehicle Type: ${vehicle.vehicleType}</p>
+                <p>Livery: ${vehicle.livery}</p>
+                <p>Operator: ${vehicle.operator}</p>
+            `;
+        } else {
+            resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
+        }
+    }
+</script>
+
+</body>
+</html>

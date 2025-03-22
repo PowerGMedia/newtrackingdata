@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Fleet Database</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input, button { padding: 10px; margin: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #ddd; }
+        .edit-input { width: 90%; }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Fleet Database</h1>
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+    <button onclick="window.location.href='/logout'">Logout</button>
+
+    <h3>Add New Fleet</h3>
+    <input type="text" id="fleetNumber" placeholder="Fleet Number">
+    <input type="text" id="reg" placeholder="Registration">
+    <input type="text" id="previousReg" placeholder="Previous Registration">
+    <input type="text" id="vehicleType" placeholder="Vehicle Type">
+    <input type="text" id="livery" placeholder="Livery">
+    <input type="text" id="operator" placeholder="Operator">
+    <button onclick="addFleet()">Add Fleet</button>
+
+    <h3>Existing Fleet Records</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Fleet Number</th>
+                <th>Reg</th>
+                <th>Previous Reg</th>
+                <th>Vehicle Type</th>
+                <th>Livery</th>
+                <th>Operator</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="fleetTable">
+            <!-- Fleet Data will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        async function loadFleets() {
+            try {
+                const response = await fetch('/api/fleets');
+                const fleets = await response.json();
+                const table = document.getElementById("fleetTable");
+                table.innerHTML = ""; 
+
+                fleets.forEach((fleet, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><input type="text" class="edit-input" value="${fleet.fleetNumber}" id="fleet-${index}"></td>
+                        <td><input type="text" class="edit-input" value="${fleet.reg}" id="reg-${index}"></td>
+                        <td><input type="text" class="edit-input" value="${fleet.previousReg}" id="previousReg-${index}"></td>
+                        <td><input type="text" class="edit-input" value="${fleet.vehicleType}" id="vehicleType-${index}"></td>
+                        <td><input type="text" class="edit-input" value="${fleet.livery}" id="livery-${index}"></td>
+                        <td><input type="text" class="edit-input" value="${fleet.operator}" id="operator-${index}"></td>
+                        <td>
+                            <button onclick="updateFleet(${index})">Update</button>
+                            <button onclick="deleteFleet(${index})" style="background-color:red;color:white;">Delete</button>
+                        </td>
+                    `;
+                    table.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Error loading fleets:", error);
+                alert("Failed to load fleets.");
+            }
+        }
+
+        async function addFleet() {
+            const fleet = {
+                fleetNumber: document.getElementById("fleetNumber").value,
+                reg: document.getElementById("reg").value,
+                previousReg: document.getElementById("previousReg").value,
+                vehicleType: document.getElementById("vehicleType").value,
+                livery: document.getElementById("livery").value,
+                operator: document.getElementById("operator").value
+            };
+
+            try {
+                const response = await fetch('/api/add_fleet', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(fleet)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("Fleet added successfully!");
+                    loadFleets();
+                } else {
+                    alert("Failed to add fleet.");
+                }
+            } catch (error) {
+                console.error("Error adding fleet:", error);
+                alert("Error adding fleet.");
+            }
+        }
+
+        async function updateFleet(index) {
+            const updatedFleet = {
+                fleetNumber: document.getElementById(`fleet-${index}`).value,
+                reg: document.getElementById(`reg-${index}`).value,
+                previousReg: document.getElementById(`previousReg-${index}`).value,
+                vehicleType: document.getElementById(`vehicleType-${index}`).value,
+                livery: document.getElementById(`livery-${index}`).value,
+                operator: document.getElementById(`operator-${index}`).value
+            };
+
+            try {
+                const response = await fetch('/api/update_fleet', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ index, updatedFleet })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("Fleet updated successfully!");
+                    loadFleets();
+                } else {
+                    alert("Failed to update fleet.");
+                }
+            } catch (error) {
+                console.error("Error updating fleet:", error);
+                alert("Error updating fleet.");
+            }
+        }
+
+        async function deleteFleet(index) {
+            try {
+                const response = await fetch('/api/delete_fleet', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ index })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("Fleet deleted successfully!");
+                    loadFleets();
+                } else {
+                    alert("Failed to delete fleet.");
+                }
+            } catch (error) {
+                console.error("Error deleting fleet:", error);
+                alert("Error deleting fleet.");
+            }
+        }
+
+        loadFleets();
+    </script>
+
+</body>
+</html>

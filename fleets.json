@@ -1,0 +1,58 @@
+[
+    {
+        "fleetNumber": "80146",
+        "reg": "YX25 NZJ",
+        "previousReg": "YY74MWG",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80147",
+        "reg": "YX25 NZK",
+        "previousReg": "YY74MWJ",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80148",
+        "reg": "YX25 NZM",
+        "previousReg": "YY74MWK",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80149",
+        "reg": "YX25 NZN",
+        "previousReg": "YY74MWL",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80150",
+        "reg": "YX25 NZO",
+        "previousReg": "YY74MWM",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80151",
+        "reg": "YX25 NZP\t",
+        "previousReg": "YY74MWN",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80152",
+        "reg": "YX25 NZR",
+        "previousReg": "YY74MWO",
+        "vehicleType": "ADL E400EV",
+        "livery": "SC Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    }
+]

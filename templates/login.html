@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+        #capsWarning {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Admin Login</h2>
+    <form method="POST" action="/login">
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        <p id="capsWarning">Caps Lock is ON!</p>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const capsWarning = document.getElementById("capsWarning");
+
+        passwordInput.addEventListener("keyup", (event) => {
+            const capsLockOn = event.getModifierState("CapsLock");
+            capsWarning.style.display = capsLockOn ? "block" : "none";
+        });
+    </script>
+
+</body>
+</html>
