@@ -44,9 +44,9 @@
     <input type="text" id="fleetNumber" placeholder="Enter Fleet Number or Reg">
     <button onclick="searchFleet()">Search</button>
     <div id="result"></div>
-    <script>
-    
+  <script>
     let fleetDatabase = [];
+
     async function loadFleets() {
         try {
             const response = await fetch('/fleets.json'); // ✅ Fetch from the correct directory
@@ -61,29 +61,67 @@
         if (fleetDatabase.length === 0) {
             await loadFleets();
         }
-    
+
         const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
         const resultDiv = document.getElementById("result");
-    
-        const vehicle = fleetDatabase.find(item => 
+
+        // Find all matching fleets
+        const matchingFleets = fleetDatabase.filter(item => 
             item.fleetNumber.toLowerCase() === input || 
             item.reg.toLowerCase() === input
         );
-    
-        if (vehicle) {
-            resultDiv.innerHTML = `
-                <p>Fleet Number: ${vehicle.fleetNumber}</p>
-                <p>Reg: ${vehicle.reg}</p>
-                <p>Previous Reg: ${vehicle.previousReg}</p>
-                <p>Vehicle Type: ${vehicle.vehicleType}</p>
-                <p>Livery: ${vehicle.livery}</p>
-                <p>Operator: ${vehicle.operator}</p>
-            `;
-        } else {
+
+        if (matchingFleets.length === 0) {
             resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
+            return;
+        }
+
+        // Display count of results
+        let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
+
+        // If multiple results, show a selection dropdown
+        if (matchingFleets.length > 1) {
+            resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
+                <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
+                    <option value="">-- Choose an option --</option>`;
+
+            matchingFleets.forEach((vehicle, index) => {
+                resultHTML += `<option value="${index}">
+                    ${vehicle.fleetNumber} - ${vehicle.reg} (${vehicle.operator})
+                </option>`;
+            });
+
+            resultHTML += `</select>`;
+        }
+
+        resultDiv.innerHTML = resultHTML;
+
+        // Show the first fleet by default if only one is found
+        if (matchingFleets.length === 1) {
+            displayFleetDetails(0);
         }
     }
+
+    function displayFleetDetails(index) {
+        const resultDiv = document.getElementById("result");
+        const selectedFleet = fleetDatabase.filter(item => 
+            item.fleetNumber.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase() ||
+            item.reg.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase()
+        )[index];
+
+        if (!selectedFleet) return;
+
+        resultDiv.innerHTML += `
+            <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber}</p>
+            <p><strong>Reg:</strong> ${selectedFleet.reg}</p>
+            <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg}</p>
+            <p><strong>Vehicle Type:</strong> ${selectedFleet.vehicleType}</p>
+            <p><strong>Livery:</strong> ${selectedFleet.livery}</p>
+            <p><strong>Operator:</strong> ${selectedFleet.operator}</p>
+        `;
+    }
 </script>
+
 
 </body>
 </html>
