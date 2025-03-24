@@ -54,5 +54,253 @@
         "vehicleType": "ADL E400EV",
         "livery": "SC Local",
         "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80153",
+        "reg": "YX25 NZS",
+        "previousReg": "YY74RWU",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80154",
+        "reg": "YX25 NZT",
+        "previousReg": "YY74RWV",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80155",
+        "reg": "YX25 NZU",
+        "previousReg": "YY74RWW",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80156",
+        "reg": "YX25 NZV",
+        "previousReg": "YY74RWX",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80157",
+        "reg": "YX25 NZW",
+        "previousReg": "YY74RWZ",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80158",
+        "reg": "YX25 NZY",
+        "previousReg": "YY74RXA",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80159",
+        "reg": "YX25 NZZ",
+        "previousReg": "YY74RXB",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80164",
+        "reg": "YX25 OAG",
+        "previousReg": " YY74UPP",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80160",
+        "reg": "YX25 OAB",
+        "previousReg": "YY74RXC",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80161",
+        "reg": "YX25 OAC",
+        "previousReg": "YY74RXD",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80162",
+        "reg": "YX25 OAD",
+        "previousReg": "YY74RXF",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80163",
+        "reg": "YX25 OAE",
+        "previousReg": "YY74UPO",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80165",
+        "reg": "YX25 OAH",
+        "previousReg": "YY74UPR",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80166",
+        "reg": "YX25 OAJ",
+        "previousReg": "YY74UPS",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80167",
+        "reg": "YX25 OAL",
+        "previousReg": "YY74UPV",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80168",
+        "reg": "YX25 OAM",
+        "previousReg": "YY74UPW",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80169",
+        "reg": "YX25 OAN",
+        "previousReg": "YY74UPX",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80170",
+        "reg": "YX25 OAO",
+        "previousReg": "YY74UPZ",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80171",
+        "reg": "YX25 OAP",
+        "previousReg": "YY74URA",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80172",
+        "reg": "YX25 OAS",
+        "previousReg": "YY74URB",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80173",
+        "reg": "YX25 OAU",
+        "previousReg": "YY74URC",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80174",
+        "reg": "YX25 OAV",
+        "previousReg": "YY74URE",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80175",
+        "reg": "YX25 OAW",
+        "previousReg": "YY74URH",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80176",
+        "reg": "YX25 OAY",
+        "previousReg": "YY74URJ",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80177",
+        "reg": "YX25 OAZ",
+        "previousReg": "YY74URK",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80178",
+        "reg": "YX25 OBA",
+        "previousReg": "",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80179",
+        "reg": "YX25 OBB",
+        "previousReg": "",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80180",
+        "reg": "YX25 OBC",
+        "previousReg": "",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80181",
+        "reg": "YX25 OBD",
+        "previousReg": "",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80182",
+        "reg": "YX25 OBE",
+        "previousReg": "",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "80183",
+        "reg": "YX25 OBF",
+        "previousReg": "",
+        "vehicleType": "Alexander Dennis Enviro400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
     }
 ]
