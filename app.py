@@ -135,6 +135,10 @@ def delete_fleet():
     
     return jsonify({"success": True, "message": "Fleet deleted successfully"})
 
+@app.route("/changes")
+def changes():
+    return render_template("changes.html")
+
 
 @app.route("/logout")
 def logout():
