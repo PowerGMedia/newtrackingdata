@@ -1,41 +1,66 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Log 2025</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #fff1c1;
-        }
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .log {
-            margin-top: 20px;
-        }
-        .log-item {
-            background: #e3e3e3;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Change Log 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #fff1c1;
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1300px;
+      width: 100%;
+    }
+    .container {
+      flex: 1 1 300px;
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    .log {
+      margin-top: 20px;
+    }
+    .log-item {
+      background: #e3e3e3;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
     <div class="container">
-        <h2>Change Log</h2>
-        <div class="log" id="logList">
-            <div class="log-item">22->24/03/2025 | Added all 40 SYRK Chesterfield ADL Envrio400EV's </div>
-            <div class="log-item">25/03/2025 | Added XLORE Dundee YUTONG U11DD 8602/</div>
-
-        </div>
+      <h2>Database Change Log</h2>
+      <div class="log" id="logList1">
+        <div class="log-item">22->24/03/2025 | Added all 40 SYRK Chesterfield ADL Envrio400EV's</div>
+        <div class="log-item">25/03/2025 | Added XPLORE Dundee YUTONG U11DD 8602/</div>
+        <div class="log-item">NULL | [details] / [fleetnoreg]/</div>
+      </div>
     </div>
+
+    <div class="container">
+      <h2>Site Change Log</h2>
+      <div class="log" id="logList2">
+        <div class="log-item">25.03.25 |        VERSION 1.1a</div>
+        <div class="log-item">25.03.25 | Change log added for Site and database changes</div>
+        <div class="log-item">25.03.25 | Added Multi-result view and fixed Mobile Compatibility</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
