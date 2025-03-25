@@ -311,5 +311,13 @@
         "vehicleType": "Yutong U11DD",
         "livery": "Xplore Dundee",
         "operator": "XPLR DUNDEE / Tayside"
+    },
+    {
+        "fleetNumber": "80183",
+        "reg": "NULL",
+        "previousReg": "NULL",
+        "vehicleType": "NULL",
+        "livery": "NULL",
+        "operator": "Stagecoach Yorkshire/Yorkshire Traction"
     }
 ]

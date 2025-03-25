@@ -37,11 +37,12 @@
 
     <nav>
         <a href="/">Home</a>
-        <a href="/admin">Database Editor</a>  <!-- ✅ New Button -->
+        <a href="/admin">Database Editor</a> 
+        <a href="/changes">Database Change Log</a> 
     </nav>
 
     <h1>Fleet Information Lookup</h1>
-    <input type="text" id="fleetNumber" placeholder="Enter Fleet Number or Reg">
+    <input type="text" id="fleetNumber" placeholder="Enter Fleet No. or Reg">
     <button onclick="searchFleet()">Search</button>
     <div id="result"></div>
   <script>
@@ -49,8 +50,8 @@
 
     async function loadFleets() {
         try {
-            const response = await fetch('/fleets.json'); // ✅ Fetch from the correct directory
-            if (!response.ok) throw new Error('Fleet data not found');
+            const response = await fetch('/fleets.json');
+            if (!response.ok) throw new Error('Fleet Not Found');
             fleetDatabase = await response.json();
         } catch (error) {
             console.error('Error loading fleet data:', error);
@@ -65,7 +66,7 @@
         const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
         const resultDiv = document.getElementById("result");
 
-        // Find all matching fleets
+  
         const matchingFleets = fleetDatabase.filter(item => 
             item.fleetNumber.toLowerCase() === input || 
             item.reg.toLowerCase() === input
@@ -76,10 +77,9 @@
             return;
         }
 
-        // Display count of results
         let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
 
-        // If multiple results, show a selection dropdown
+
         if (matchingFleets.length > 1) {
             resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
                 <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
@@ -96,7 +96,7 @@
 
         resultDiv.innerHTML = resultHTML;
 
-        // Show the first fleet by default if only one is found
+ 
         if (matchingFleets.length === 1) {
             displayFleetDetails(0);
         }
