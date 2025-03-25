@@ -38,6 +38,9 @@ def serve_fleets():
 def home():
     return render_template("index.html")
 
+@app.route("/changes")
+def changes():
+    return render_template("changes.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -135,9 +138,7 @@ def delete_fleet():
     
     return jsonify({"success": True, "message": "Fleet deleted successfully"})
 
-@app.route("/changes")
-def changes():
-    return render_template("changes.html")
+
 
 
 @app.route("/logout")
