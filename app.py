@@ -140,6 +140,48 @@ def delete_fleet():
     return jsonify({"success": True, "message": "Fleet deleted successfully"})
 
 
+@app.route("/request_change", methods=["POST"])
+def request_change():
+    if not request.is_json:
+        return jsonify({"success": False, "error": "Invalid request body"}), 400
+
+    data = request.get_json()
+    fleet = data.get("fleet")
+    notes = data.get("notes")
+
+    if not fleet or not notes:
+        return jsonify({"success": False, "error": "Missing required data"}), 400
+
+    webhook_url = os.getenv("DISCORD_WEBHOOK")
+    if not webhook_url:
+        return jsonify({"success": False, "error": "Webhook URL not set"}), 500
+
+    embed = {
+        "title": f"Fleet Change Request: {fleet.get('fleetNumber')} ({fleet.get('reg')})",
+        "description": notes,
+        "fields": [
+            {"name": "Previous Reg", "value": fleet.get("previousReg", "N/A"), "inline": True},
+            {"name": "Vehicle Type", "value": fleet.get("vehicleType", "N/A"), "inline": True},
+            {"name": "Livery", "value": fleet.get("livery", "N/A"), "inline": True},
+            {"name": "Operator", "value": fleet.get("operator", "N/A"), "inline": True}
+        ],
+        "color": 16753920
+    }
+
+    payload = {
+        "username": "Fleet Lookup Bot",
+        "embeds": [embed]
+    }
+
+    try:
+        res = requests.post(webhook_url, json=payload)
+        if res.status_code not in (200, 204):
+            raise Exception(res.text)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+    return jsonify({"success": True})
+
 
 
 @app.route("/logout")
