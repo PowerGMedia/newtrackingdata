@@ -2,146 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fleet Lookup</title>
     <style>
         body {
-            font-family: sans-serif;
-            background: #1a1a1a;
-            color: #fff;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
         }
         nav {
-            background: #111;
-            padding: 15px;
-            color: white;
+            background: #daf0ff;
+            padding: 10px;
         }
-        nav h1 {
-            margin: 0;
-            font-size: 20px;
+        nav a {
+            color: rgb(255, 226, 183);
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
         }
-        .container {
-            padding: 20px;
+        nav a:hover {
+            background: #e6ffce;
         }
-        input[type="text"] {
-            padding: 8px;
-            width: 300px;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            padding: 8px 15px;
-            margin-left: 10px;
-            border: none;
-            background: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #3e8e41;
+        input, button {
+            padding: 10px;
+            margin: 10px;
         }
         #result {
             margin-top: 20px;
-        }
-        #changeForm {
-            margin-top: 30px;
-            padding: 15px;
-            background: #292929;
-            border-radius: 8px;
-            display: none;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <h1>Fleet Lookup System</h1>
+        <a href="/">Home</a>
+        <a href="/admin">Database Editor</a> 
+        <a href="/changes">Database Change Log</a> 
     </nav>
 
-    <div class="container">
-        <input type="text" id="fleetInput" placeholder="Enter fleet number or reg">
-        <button onclick="searchFleet()">Search</button>
+    <h1>Fleet Information Lookup</h1>
+    <input type="text" id="fleetNumber" placeholder="Enter Fleet No. or Reg">
+    <button onclick="searchFleet()">Search</button>
+    <div id="result"></div>
+  <script>
+    let fleetDatabase = [];
 
-        <div id="result"></div>
+    async function loadFleets() {
+        try {
+            const response = await fetch('/fleets.json');
+            if (!response.ok) throw new Error('Fleet Not Found');
+            fleetDatabase = await response.json();
+        } catch (error) {
+            console.error('Error loading fleet data:', error);
+        }
+    }
 
-        <div id="changeForm">
-            <h3>Request a Change</h3>
-            <textarea id="changeNotes" rows="5" placeholder="Describe the change..."></textarea><br><br>
-            <button onclick="submitChange()">Submit Request</button>
-        </div>
-    </div>
-
-    <script>
-        let selectedFleet = null;
-
-        async function searchFleet() {
-            const input = document.getElementById("fleetInput").value.trim().toLowerCase();
-            const result = document.getElementById("result");
-            const form = document.getElementById("changeForm");
-            result.innerHTML = "";
-            form.style.display = "none";
-
-            const res = await fetch("/api/buses");
-            const data = await res.json();
-
-            const found = data.find(item =>
-                item.fleetNumber.toLowerCase() === input ||
-                item.reg.toLowerCase() === input
-            );
-
-            if (!found) {
-                result.innerHTML = "<p>No fleet data found.</p>";
-                return;
-            }
-
-            selectedFleet = found;
-
-            result.innerHTML = `
-                <p><strong>Fleet Number:</strong> ${found.fleetNumber}</p>
-                <p><strong>Reg:</strong> ${found.reg}</p>
-                <p><strong>Previous Reg:</strong> ${found.previousReg}</p>
-                <p><strong>Vehicle Type:</strong> ${found.vehicleType}</p>
-                <p><strong>Livery:</strong> ${found.livery}</p>
-                <p><strong>Operator:</strong> ${found.operator}</p>
-            `;
-
-            form.style.display = "block";
+    async function searchFleet() {
+        if (fleetDatabase.length === 0) {
+            await loadFleets();
         }
 
-        async function submitChange() {
-            const notes = document.getElementById("changeNotes").value.trim();
-            if (!notes) {
-                alert("Please enter notes for the change request.");
-                return;
-            }
+        const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
+        const resultDiv = document.getElementById("result");
 
-            const res = await fetch("/api/request_change", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    fleet: selectedFleet,
-                    notes: notes
-                })
+  
+        const matchingFleets = fleetDatabase.filter(item => 
+            item.fleetNumber.toLowerCase() === input || 
+            item.reg.toLowerCase() === input
+        );
+
+        if (matchingFleets.length === 0) {
+            resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
+            return;
+        }
+
+        let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
+
+
+        if (matchingFleets.length > 1) {
+            resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
+                <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
+                    <option value="">-- Choose an option --</option>`;
+
+            matchingFleets.forEach((vehicle, index) => {
+                resultHTML += `<option value="${index}">
+                    ${vehicle.fleetNumber} - ${vehicle.reg} (${vehicle.operator})
+                </option>`;
             });
 
-            const result = await res.json();
-
-            if (result.success) {
-                alert("Change request submitted!");
-                document.getElementById("changeNotes").value = "";
-                document.getElementById("changeForm").style.display = "none";
-            } else {
-                alert("Failed to submit request: " + result.error);
-            }
+            resultHTML += `</select>`;
         }
-    </script>
+
+        resultDiv.innerHTML = resultHTML;
+
+ 
+        if (matchingFleets.length === 1) {
+            displayFleetDetails(0);
+        }
+    }
+
+    function displayFleetDetails(index) {
+        const resultDiv = document.getElementById("result");
+        const selectedFleet = fleetDatabase.filter(item => 
+            item.fleetNumber.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase() ||
+            item.reg.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase()
+        )[index];
+
+        if (!selectedFleet) return;
+
+        resultDiv.innerHTML += `
+            <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber}</p>
+            <p><strong>Reg:</strong> ${selectedFleet.reg}</p>
+            <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg}</p>
+            <p><strong>Vehicle Type:</strong> ${selectedFleet.vehicleType}</p>
+            <p><strong>Livery:</strong> ${selectedFleet.livery}</p>
+            <p><strong>Operator:</strong> ${selectedFleet.operator}</p>
+        `;
+    }
+</script>
+
 
 </body>
 </html>
