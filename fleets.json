@@ -302,5 +302,14 @@
         "vehicleType": "Alexander Dennis Enviro400EV",
         "livery": "Stagecoach Local",
         "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+
+    {
+        "fleetNumber": "8602",
+        "reg": "SG25JHO",
+        "previousReg": "",
+        "vehicleType": "Yutong U11DD",
+        "livery": "Xplore Dundee",
+        "operator": "XPLR DUNDEE / Tayside"
     }
 ]
