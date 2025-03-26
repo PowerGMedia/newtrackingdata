@@ -91,7 +91,7 @@ def login():
     if not email or not password:
         return jsonify({"success": False, "error": "Missing email or password"}), 400
 
--
+
     response = supabase.table("users").select("*").eq("email", email).execute()
     user = response.data[0] if response.data else None
 
