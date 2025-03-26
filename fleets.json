@@ -319,5 +319,21 @@
         "vehicleType": "NULL",
         "livery": "NULL",
         "operator": "Stagecoach Yorkshire/Yorkshire Traction"
+    },
+    {
+        "fleetNumber": "5011",
+        "reg": "YX25 OJJ",
+        "previousReg": "-",
+        "vehicleType": "ADL Enviro200MMC",
+        "livery": "D&G [New]",
+        "operator": "D&G - Crewe"
+    },
+    {
+        "fleetNumber": "5012",
+        "reg": "YX25 OJK",
+        "previousReg": "-",
+        "vehicleType": "ADL Enviro200MMC",
+        "livery": "D&G [New]",
+        "operator": "D&G - Crewe"
     }
 ]
