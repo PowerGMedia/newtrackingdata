@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 
-
+SETTINGS_FILE = "settings.json"
 
 
 load_dotenv()
@@ -77,7 +77,7 @@ def register():
 
     hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-=
+
     response = supabase.table("users").insert({"email": email, "password": hashed_pw, "ip_address": ip_address}).execute()
 
     return jsonify({"success": True, "message": "Registration successful"}) if response else jsonify({"success": False, "error": "Error creating user"})
