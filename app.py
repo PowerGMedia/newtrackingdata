@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from flask import send_from_directory
 import requests
+from supabase import create_client, Client
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -18,7 +19,7 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 # Initialize Supabase
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY) 
 
 FLEETS_FILE = "fleets.json"
 
