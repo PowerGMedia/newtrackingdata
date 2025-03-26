@@ -4,31 +4,15 @@ import os
 from dotenv import load_dotenv
 from flask import send_from_directory
 import requests
-from supabase import create_client, Client
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
-
-
-SETTINGS_FILE = "settings.json"
+app.secret_key = "nothing"  
 
 
 load_dotenv()
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-
-# Initialize Supabase
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY) 
 
 FLEETS_FILE = "fleets.json"
-
-def load_settings():
-    try:
-        with open(SETTINGS_FILE, "r") as file:
-            return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return {"registration_open": "No"}
 
 
 def load_fleets():
@@ -60,47 +44,18 @@ def home():
 def changes():
     return render_template("changes.html")
 
-# REGISTRATION
-
-@app.route("/register", methods=["POST"])
-def register():
-    settings = load_settings()
-    if settings.get("registration_open", "No").lower() != "yes":
-        return jsonify({"success": False, "error": "Registration is currently closed"}), 403
-
-    data = request.get_json()
-    email = data.get("email")
-    password = data.get("password")
-    ip_address = request.remote_addr  
-
-    if not email or not password:
-        return jsonify({"success": False, "error": "Missing email or password"}), 400
-
-    hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-
-
-    response = supabase.table("users").insert({"email": email, "password": hashed_pw, "ip_address": ip_address}).execute()
-
-    return jsonify({"success": True, "message": "Registration successful"}) if response else jsonify({"success": False, "error": "Error creating user"})
-
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    data = request.get_json()
-    email = data.get("email")
-    password = data.get("password")
+    if request.method == "POST":
+        password = request.form.get("password")
 
-    if not email or not password:
-        return jsonify({"success": False, "error": "Missing email or password"}), 400
+        if password == ADMIN_PASSWORD:
+            session["logged_in"] = True
+            return redirect(url_for("admin"))
+        else:
+            return render_template("login.html", error="Invalid password!")
 
-
-    response = supabase.table("users").select("*").eq("email", email).execute()
-    user = response.data[0] if response.data else None
-
-    if user and bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
-        session["user_id"] = user["id"]
-        return jsonify({"success": True, "message": "Login successful"})
-    else:
-        return jsonify({"success": False, "error": "Invalid credentials"}), 401
+    return render_template("login.html")
 
 
 @app.route("/admin")
@@ -224,7 +179,6 @@ def request_change():
         return jsonify({"success": False, "message": f"Failed to send to Discord: {str(e)}"}), 500
 
     return jsonify({"success": True, "message": "Change request submitted!"})
-
 
 
 @app.route("/logout")
