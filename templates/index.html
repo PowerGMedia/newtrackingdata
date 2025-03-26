@@ -31,6 +31,17 @@
             margin-top: 20px;
             font-weight: bold;
         }
+        #request-change-form {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+        #request-change-form label {
+            display: block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -45,83 +56,129 @@
     <input type="text" id="fleetNumber" placeholder="Enter Fleet No. or Reg">
     <button onclick="searchFleet()">Search</button>
     <div id="result"></div>
-  <script>
-    let fleetDatabase = [];
 
-    async function loadFleets() {
-        try {
-            const response = await fetch('/fleets.json');
-            if (!response.ok) throw new Error('Fleet Not Found');
-            fleetDatabase = await response.json();
-        } catch (error) {
-            console.error('Error loading fleet data:', error);
+    <!-- Change Request Form -->
+    <div id="request-change-form">
+        <h3>Request a Change</h3>
+        <label for="newReg">New Registration (if applicable):</label>
+        <input type="text" id="newReg"><br>
+
+        <label for="newLivery">New Livery:</label>
+        <input type="text" id="newLivery"><br>
+
+        <label for="newOperator">New Operator:</label>
+        <input type="text" id="newOperator"><br>
+
+        <label for="newVehicleType">New Vehicle Type:</label>
+        <input type="text" id="newVehicleType"><br>
+
+        <label for="extraNotes">Extra Notes:</label>
+        <textarea id="extraNotes"></textarea><br>
+
+        <button onclick="submitChangeRequest()">Submit Change Request</button>
+    </div>
+
+    <script>
+        let fleetDatabase = [];
+
+        async function loadFleets() {
+            try {
+                const response = await fetch('/fleets.json');
+                if (!response.ok) throw new Error('Fleet Not Found');
+                fleetDatabase = await response.json();
+            } catch (error) {
+                console.error('Error loading fleet data:', error);
+            }
         }
-    }
 
-    async function searchFleet() {
-        if (fleetDatabase.length === 0) {
-            await loadFleets();
+        async function searchFleet() {
+            if (fleetDatabase.length === 0) {
+                await loadFleets();
+            }
+
+            const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
+            const resultDiv = document.getElementById("result");
+
+            const matchingFleets = fleetDatabase.filter(item => 
+                item.fleetNumber.toLowerCase() === input || 
+                item.reg.toLowerCase() === input
+            );
+
+            if (matchingFleets.length === 0) {
+                resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
+                return;
+            }
+
+            let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
+
+            if (matchingFleets.length > 1) {
+                resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
+                    <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
+                        <option value="">-- Choose an option --</option>`;
+
+                matchingFleets.forEach((vehicle, index) => {
+                    resultHTML += `<option value="${index}">
+                        ${vehicle.fleetNumber} - ${vehicle.reg} (${vehicle.operator})
+                    </option>`;
+                });
+
+                resultHTML += `</select>`;
+            }
+
+            resultDiv.innerHTML = resultHTML;
+
+            if (matchingFleets.length === 1) {
+                displayFleetDetails(0);
+            }
         }
 
-        const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
-        const resultDiv = document.getElementById("result");
+        function displayFleetDetails(index) {
+            const resultDiv = document.getElementById("result");
+            const selectedFleet = fleetDatabase.filter(item => 
+                item.fleetNumber.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase() ||
+                item.reg.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase()
+            )[index];
 
-  
-        const matchingFleets = fleetDatabase.filter(item => 
-            item.fleetNumber.toLowerCase() === input || 
-            item.reg.toLowerCase() === input
-        );
+            if (!selectedFleet) return;
 
-        if (matchingFleets.length === 0) {
-            resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
-            return;
+            resultDiv.innerHTML += `
+                <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber}</p>
+                <p><strong>Reg:</strong> ${selectedFleet.reg}</p>
+                <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg}</p>
+                <p><strong>Vehicle Type:</strong> ${selectedFleet.vehicleType}</p>
+                <p><strong>Livery:</strong> ${selectedFleet.livery}</p>
+                <p><strong>Operator:</strong> ${selectedFleet.operator}</p>
+                <button onclick="showChangeForm('${selectedFleet.fleetNumber}', '${selectedFleet.reg}')">Request Change</button>
+            `;
         }
 
-        let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
+        function showChangeForm(fleetNumber, reg) {
+            document.getElementById("request-change-form").style.display = "block";
+            document.getElementById("request-change-form").dataset.fleetNumber = fleetNumber;
+            document.getElementById("request-change-form").dataset.reg = reg;
+        }
 
+        async function submitChangeRequest() {
+            const fleetNumber = document.getElementById("request-change-form").dataset.fleetNumber;
+            const reg = document.getElementById("request-change-form").dataset.reg;
+            const newReg = document.getElementById("newReg").value;
+            const newLivery = document.getElementById("newLivery").value;
+            const newOperator = document.getElementById("newOperator").value;
+            const newVehicleType = document.getElementById("newVehicleType").value;
+            const extraNotes = document.getElementById("extraNotes").value;
 
-        if (matchingFleets.length > 1) {
-            resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
-                <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
-                    <option value="">-- Choose an option --</option>`;
-
-            matchingFleets.forEach((vehicle, index) => {
-                resultHTML += `<option value="${index}">
-                    ${vehicle.fleetNumber} - ${vehicle.reg} (${vehicle.operator})
-                </option>`;
+            const response = await fetch("/api/request_change", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    fleetNumber, reg, newReg, newLivery, newOperator, newVehicleType, extraNotes
+                })
             });
 
-            resultHTML += `</select>`;
+            const result = await response.json();
+            alert(result.message);
         }
-
-        resultDiv.innerHTML = resultHTML;
-
- 
-        if (matchingFleets.length === 1) {
-            displayFleetDetails(0);
-        }
-    }
-
-    function displayFleetDetails(index) {
-        const resultDiv = document.getElementById("result");
-        const selectedFleet = fleetDatabase.filter(item => 
-            item.fleetNumber.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase() ||
-            item.reg.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase()
-        )[index];
-
-        if (!selectedFleet) return;
-
-        resultDiv.innerHTML += `
-            <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber}</p>
-            <p><strong>Reg:</strong> ${selectedFleet.reg}</p>
-            <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg}</p>
-            <p><strong>Vehicle Type:</strong> ${selectedFleet.vehicleType}</p>
-            <p><strong>Livery:</strong> ${selectedFleet.livery}</p>
-            <p><strong>Operator:</strong> ${selectedFleet.operator}</p>
-        `;
-    }
-</script>
-
+    </script>
 
 </body>
 </html>

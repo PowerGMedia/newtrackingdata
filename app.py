@@ -3,6 +3,7 @@ import json
 import os
 from dotenv import load_dotenv
 from flask import send_from_directory
+import requests
 
 app = Flask(__name__)
 app.secret_key = "nothing"  
@@ -139,7 +140,45 @@ def delete_fleet():
     
     return jsonify({"success": True, "message": "Fleet deleted successfully"})
 
+@app.route("/api/request_change", methods=["POST"])
+def request_change():
+    data = request.get_json()
+    
+    fleet_number = data.get("fleetNumber")
+    reg = data.get("reg")
+    new_reg = data.get("newReg", "N/A")
+    new_livery = data.get("newLivery", "N/A")
+    new_operator = data.get("newOperator", "N/A")
+    new_vehicle_type = data.get("newVehicleType", "N/A")
+    extra_notes = data.get("extraNotes", "N/A")
 
+    if not fleet_number or not reg:
+        return jsonify({"success": False, "message": "Fleet Number and Registration are required!"}), 400
+
+
+    discord_webhook_url = os.getenv("DISCORD_WEBHOOK")
+    if not discord_webhook_url:
+        return jsonify({"success": False, "message": "Webhook URL is missing!"}), 500
+
+    message = (
+        f"🚨 **Fleet Change Request** 🚨\n"
+        f"**Fleet Number:** {fleet_number}\n"
+        f"**Current Reg:** {reg}\n"
+        f"**New Reg:** {new_reg}\n"
+        f"**New Livery:** {new_livery}\n"
+        f"**New Operator:** {new_operator}\n"
+        f"**New Vehicle Type:** {new_vehicle_type}\n"
+        f"**Extra Notes:** {extra_notes}"
+    )
+
+    # send to discord
+    try:
+        response = requests.post(discord_webhook_url, json={"content": message})
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        return jsonify({"success": False, "message": f"Failed to send to Discord: {str(e)}"}), 500
+
+    return jsonify({"success": True, "message": "Change request submitted!"})
 
 
 @app.route("/logout")
