@@ -344,5 +344,29 @@
         "vehicleType": "ADL Enviro200MMC",
         "livery": "D&G [New]",
         "operator": "D&G - Crewe"
+    },
+    {
+        "fleetNumber": "73112",
+        "reg": "YB74 GKY",
+        "previousReg": "-",
+        "vehicleType": "Yutong E12",
+        "livery": "Unconfirmed",
+        "operator": "Stagecoach *Midlands*"
+    },
+    {
+        "fleetNumber": "73113",
+        "reg": "YB74 GKZ",
+        "previousReg": "-",
+        "vehicleType": "Yutong E12",
+        "livery": "Unconfirmed",
+        "operator": "Stagecoach *Midlands*"
+    },
+    {
+        "fleetNumber": "73114",
+        "reg": "YB74 GLF",
+        "previousReg": "-",
+        "vehicleType": "Yutong E12",
+        "livery": "Unconfirmed",
+        "operator": "Stagecoach *Midlands*"
     }
 ]
