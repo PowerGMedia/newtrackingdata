@@ -11,6 +11,8 @@
             margin: 50px;
         }
         nav {
+            display: flex;
+            align-items: center;
             background: #5f88a3;
             padding: 10px;
         }
@@ -19,6 +21,11 @@
             text-decoration: none;
             padding: 10px 20px;
             display: inline-block;
+        }
+
+        .logo {
+        height: 40px; /* Adjust size as needed */
+        margin-right: 15px;
         }
         nav a:hover {
             background: #dddddd;
@@ -47,6 +54,9 @@
 <body>
 
     <nav>
+        <a href="/">
+            <img src="cdn/ntlogo.png" alt="The website's basic branding." class="logo">
+        </a>
         <a href="/">Home</a>
         <a href="/admin">Database Editor</a> 
         <a href="/changes">Database Change Log</a> 
