@@ -24,7 +24,7 @@
         }
 
         .logo {
-        height: 40px; /* Adjust size as needed */
+        height: 40px; 
         margin-right: 15px;
         }
         nav a:hover {
@@ -55,7 +55,8 @@
 
     <nav>
         <a href="/">
-            <img src="cdn/ntlogo.png" alt="The website's basic branding." class="logo">
+            <img src="{{ url_for('static', filename='ntlogo.png') }}" alt="Logo" class="logo">
+
         </a>
         <a href="/">Home</a>
         <a href="/admin">Database Editor</a> 
