@@ -343,7 +343,8 @@
         "previousReg": "-",
         "vehicleType": "ADL Enviro200MMC",
         "livery": "D&G [New]",
-        "operator": "D&G - Crewe"
+        "operator": "D&G - Crewe",
+        "isonbustimes": "Yes"
     },
     {
         "fleetNumber": "73112",
@@ -351,7 +352,8 @@
         "previousReg": "-",
         "vehicleType": "Yutong E12",
         "livery": "Unconfirmed",
-        "operator": "Stagecoach *Midlands*"
+        "operator": "Stagecoach *Midlands*",
+        "isonbustimes": "No"
     },
     {
         "fleetNumber": "73113",
@@ -359,7 +361,8 @@
         "previousReg": "-",
         "vehicleType": "Yutong E12",
         "livery": "Unconfirmed",
-        "operator": "Stagecoach *Midlands*"
+        "operator": "Stagecoach *Midlands*",
+        "isonbustimes": "No"
     },
     {
         "fleetNumber": "73114",
@@ -367,6 +370,7 @@
         "previousReg": "-",
         "vehicleType": "Yutong E12",
         "livery": "Unconfirmed",
-        "operator": "Stagecoach *Midlands*"
+        "operator": "Stagecoach *Midlands*",
+        "isonbustimes": "No"
     }
 ]
