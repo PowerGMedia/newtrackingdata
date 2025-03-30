@@ -44,6 +44,14 @@ def home():
 def changes():
     return render_template("changes.html")
 
+@app.route("/data-sources")
+def changes():
+    return render_template("data-sources.html")
+
+@app.route("/contact")
+def changes():
+    return render_template("contact.html")
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
