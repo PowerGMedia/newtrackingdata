@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            background: #5f88a3;
+            padding: 10px;
+        }
+        nav a {
+            color: rgb(255, 238, 212);
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .logo {
+        height: 40px; 
+        margin-right: 15px;
+        }
+        nav a:hover {
+            background: #dddddd;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 15px;
+        background: #5f88a3;
+        text-align: center;
+        color: white;
+        }
+        .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        }
+        footer a {
+        color: rgb(255, 238, 212);
+        text-decoration: none;
+        font-weight: bold;
+        }
+        footer a:hover {
+        text-decoration: underline;
+        }
+    </style>
+</head>    
+<body>
+        <nav>
+        <a href="/">
+            <img src="{{ url_for('static', filename='ntlogo.png') }}" alt="Logo" class="logo">
+
+        </a>
+        <a href="/changes">Database Change Log</a> 
+    </nav>
+
+    
+    <h1> Contact Us! </h1>
+    <p>Please remember to use this page for reasons that aren't correcting a vehicles 
+        details, please use the designated "Request a Change Buttons"
+    </p>
+    <summary>If you have a real need to contact us, please DM "byorkshire" on Discord.</summary>
+    <h6> If there is a data issue, please use the link in the footer to see how the data was gained
+        then contact us.
+    <summary>If you happen to be one of them data source owners, and you want us to 
+        stop using your service as a source, please contact us directly for a chat!
+    </summary>
+
+</body>
+
+<footer>
+    <div class="footer-content">
+        <h5>These buttons may not be 100% working as I am currently working on them!</h5>
+        <a href="/">Home</a>
+        <a href="/data-sources">Data Sources</a>
+
+        <p>© 2024 Fleet Lookup. All rights reserved.</p>
+    </div>
+</footer>
+</html>

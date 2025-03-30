@@ -49,6 +49,27 @@
             display: block;
             margin-top: 10px;
         }
+        footer {
+        margin-top: 50px;
+        padding: 15px;
+        background: #5f88a3;
+        text-align: center;
+        color: white;
+        }
+        .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        }
+        footer a {
+        color: rgb(255, 238, 212);
+        text-decoration: none;
+        font-weight: bold;
+        }
+        footer a:hover {
+        text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -58,8 +79,8 @@
             <img src="{{ url_for('static', filename='ntlogo.png') }}" alt="Logo" class="logo">
 
         </a>
-        <a href="/">Home</a>
-        <a href="/admin">Database Editor</a> 
+
+        <a href="/admin">Admin Login</a> 
         <a href="/changes">Database Change Log</a> 
     </nav>
 
@@ -194,4 +215,13 @@
     </script>
 
 </body>
+<footer>
+    <div class="footer-content">
+        <h5>These buttons may not be 100% working as I am currently working on them!</h5>
+        <a href="/contact">Contact</a>
+        <a href="/data-sources">Data Sources</a>
+
+        <p>© 2024 NewTrackingFleets. Can be used for Personal Use only.</p>
+    </div>
+</footer>
 </html>

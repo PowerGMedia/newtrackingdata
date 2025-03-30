@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            background: #5f88a3;
+            padding: 10px;
+        }
+        nav a {
+            color: rgb(255, 238, 212);
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .logo {
+        height: 40px; 
+        margin-right: 15px;
+        }
+        nav a:hover {
+            background: #dddddd;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 15px;
+        background: #5f88a3;
+        text-align: center;
+        color: white;
+        }
+        .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        }
+        footer a {
+        color: rgb(255, 238, 212);
+        text-decoration: none;
+        font-weight: bold;
+        }
+        footer a:hover {
+        text-decoration: underline;
+        }
+        
+        p {
+            width: 50ch; /* Limits to approximately 50 characters per line */
+            word-wrap: break-word; /* Ensures words break if necessary */
+        }
+        
+    </style>
+</head>    
+<body>
+        <nav>
+        <a href="/">
+            <img src="{{ url_for('static', filename='ntlogo.png') }}" alt="Logo" class="logo">
+
+        </a>
+        <a href="/changes">Database Change Log</a> 
+    </nav>
+
+    <h1 style="color:#ffde84;">Data Sources</h1>
+    <p>NewTrackingFleets couldn't be made without the help of other data sites and internal sources.
+    </p>
+    <br>
+    <h4> So here is some of the sources we use. </h2>
+    <h5><a href="https://www.buslistsontheweb.co.uk/">BusListsOnTheWeb</a></h4>
+    <h5><a href="https://www.bustimes.org/">Bustimes.org</a></h4>
+    <br>
+    <summary> NewTrackingFleets relies on Internal Operator Sources aswell as the websites mentioned above. 
+        Any internal operator sources or information someone has on a vehicle can requrest 
+        a change on the fleet summary page it's self or by using the contact form below.
+    </summary>
