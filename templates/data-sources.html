@@ -12,9 +12,11 @@
         }
         nav {
             display: flex;
+            justify-content: center;
             align-items: center;
             background: #5f88a3;
             padding: 10px;
+            flex-wrap: wrap;
         }
         nav a {
             color: rgb(255, 238, 212);
@@ -22,10 +24,9 @@
             padding: 10px 20px;
             display: inline-block;
         }
-
         .logo {
-        height: 40px; 
-        margin-right: 15px;
+            height: 40px; 
+            margin-right: 15px;
         }
         nav a:hover {
             background: #dddddd;
@@ -33,61 +34,58 @@
         footer {
             margin-top: 50px;
             padding: 15px;
-        background: #5f88a3;
-        text-align: center;
-        color: white;
+            background: #5f88a3;
+            text-align: center;
+            color: white;
         }
         .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
         footer a {
-        color: rgb(255, 238, 212);
-        text-decoration: none;
-        font-weight: bold;
+            color: rgb(255, 238, 212);
+            text-decoration: none;
+            font-weight: bold;
         }
         footer a:hover {
-        text-decoration: underline;
+            text-decoration: underline;
         }
-        
         p {
             width: 50ch; 
             word-wrap: break-word;
+            margin: 0 auto; /* Centers the paragraph */
         }
-        
     </style>
 </head>    
 <body>
-        <nav>
+    <nav>
         <a href="/">
             <img src="{{ url_for('static', filename='ntlogo.png') }}" alt="Logo" class="logo">
-
         </a>
         <a href="/changes">Database Change Log</a> 
     </nav>
 
     <h1 style="color:#ffde84;">Data Sources</h1>
-    <p>NewTrackingFleets couldn't be made without the help of other data sites and internal sources.
-    </p>
+    <p>NewTrackingFleets couldn't be made without the help of other data sites and internal sources.</p>
     <br>
-    <h4> So here is some of the sources we use. </h2>
-    <h5><a href="https://www.buslistsontheweb.co.uk/">BusListsOnTheWeb</a></h4>
-    <h5><a href="https://www.bustimes.org/">Bustimes.org</a></h4>
+    <h4>So here are some of the sources we use.</h4>
+    <h5><a href="https://www.buslistsontheweb.co.uk/">BusListsOnTheWeb</a></h5>
+    <h5><a href="https://www.bustimes.org/">Bustimes.org</a></h5>
     <br>
-    <summary> NewTrackingFleets relies on Internal Operator Sources aswell as the websites mentioned above. 
-        Any internal operator sources or information someone has on a vehicle can requrest 
-        a change on the fleet summary page it's self or by using the contact form below.
-    </summary>
+    <summary>NewTrackingFleets relies on Internal Operator Sources as well as the websites mentioned above. 
+        Any internal operator sources or information someone has on a vehicle can request 
+        a change on the fleet summary page itself or by using the contact form below.
+    </summary>a
 
     <footer>
         <div class="footer-content">
             <h5>These buttons may not be 100% working as I am currently working on them!</h5>
             <a href="/">Home</a>
             <a href="/contact">Contact</a>
-    
             <p>© 2024 NewTrackingFleets. Can be used for Personal Use only.</p>
         </div>
     </footer>
+</body>
 </html>
