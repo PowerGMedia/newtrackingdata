@@ -45,11 +45,11 @@ def changes():
     return render_template("changes.html")
 
 @app.route("/data-sources")
-def changes():
+def data_sources():
     return render_template("data-sources.html")
 
 @app.route("/contact")
-def changes():
+def contact():
     return render_template("contact.html")
 
 @app.route("/login", methods=["GET", "POST"])
