@@ -372,5 +372,87 @@
         "livery": "Unconfirmed",
         "operator": "Stagecoach *Midlands*",
         "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "71016",
+        "reg": "W6 FAL",
+        "previousReg": "SM15 WCR",
+        "vehicleType": "Wright StreetDeck NewPower EV",
+        "livery": "Ultraviolet",
+        "operator": "First Eastern Counties",
+        "isonbustimes": "Yes"
+    },
+    {
+        "fleetNumber": "71020",
+        "reg": "MXZ 7674",
+        "previousReg": "SO15 CUJ",
+        "vehicleType": "Wright StreetDeck NewPower EV",
+        "livery": "Ultraviolet",
+        "operator": "First Eastern Counties",
+        "isonbustimes": "Yes"
+    },
+    {
+        "fleetNumber": "71022",
+        "reg": "CMZ 5332",
+        "previousReg": "---",
+        "vehicleType": "Wright StreetDeck NewPower EV",
+        "livery": "Ultraviolet",
+        "operator": "First Eastern Counties",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "71023",
+        "reg": "XIG 1723",
+        "previousReg": "---",
+        "vehicleType": "Wright StreetDeck NewPower EV",
+        "livery": "Ultraviolet",
+        "operator": "First Eastern Counties",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "71024",
+        "reg": "XIG 1724",
+        "previousReg": "---",
+        "vehicleType": "Wright StreetDeck NewPower EV",
+        "livery": "Ultraviolet",
+        "operator": "First Eastern Counties",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "",
+        "reg": "SN09 SEA",
+        "previousReg": "---",
+        "vehicleType": "ADL Envrio200",
+        "livery": "White",
+        "operator": "",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "",
+        "reg": "MX07 BVC",
+        "previousReg": "---",
+        "vehicleType": "Volvo B9TL Wright Eclipse Gemini",
+        "livery": "White",
+        "operator": "Ex-Vision Bus -> No Current Operator",
+        "isonbustimes": "Old Entry is."
+    },
+    {
+        "fleetNumber": "",
+        "reg": "YJ65 EUM",
+        "previousReg": "---",
+        "vehicleType": "Optre Metrocity",
+        "livery": "White (TrawsCymru)",
+        "operator": "Lloyds Coaches-> No Current Operator",
+        "isonbustimes": "Old Entry is."
+    },
+    {
+        "fleetNumber": "",
+        "reg": "RE63 EOF",
+        "previousReg": "---",
+        "vehicleType": "Wright StreetLite DF",
+        "livery": "Previous: Newbury & District -> Now: No Information",
+        "operator": "Newbury & District -> No Current Operator",
+        "isonbustimes": "Old Entry is."
     }
 ]
+
