@@ -129,12 +129,12 @@
 
     const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
     const resultDiv = document.getElementById("result");
-
+    
     const matchingFleets = fleetDatabase.filter(item => {
-        const fleetNum = item.fleetNumber?.toLowerCase?.();
-        const reg = item.reg?.toLowerCase?.();
-        return fleetNum === input || reg === input;
-    });
+    const fleetNum = String(item.fleetNumber ?? "").toLowerCase();
+    const reg = String(item.reg ?? "").toLowerCase();
+    return fleetNum === input || reg === input;
+});
 
     if (matchingFleets.length === 0) {
         resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
