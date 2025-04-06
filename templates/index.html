@@ -173,7 +173,17 @@ function displayFleetDetails(index) {
 
     if (!selectedFleet) return;
 
-    resultDiv.innerHTML += `
+    // Clear everything before showing details again
+    resultDiv.innerHTML = `
+        <label for="fleetSelect">Select a Fleet:</label>
+        <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
+            <option value="">-- Choose an option --</option>
+            ${window.currentMatches.map((vehicle, i) => `
+                <option value="${i}" ${i == index ? "selected" : ""}>
+                    ${vehicle.fleetNumber ?? 'Unknown'} - ${vehicle.reg ?? 'Unknown'} (${vehicle.operator ?? 'Unknown'})
+                </option>
+            `).join("")}
+        </select>
         <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber ?? 'N/A'}</p>
         <p><strong>Reg:</strong> ${selectedFleet.reg ?? 'N/A'}</p>
         <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg ?? 'N/A'}</p>
