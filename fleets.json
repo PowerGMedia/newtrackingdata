@@ -453,6 +453,252 @@
         "livery": "Previous: Newbury & District -> Now: No Information",
         "operator": "Newbury & District -> No Current Operator",
         "isonbustimes": "Old Entry is."
+    },
+    [
+    {
+        "fleetNumber": "80185",
+        "reg": "SK25AYO",
+        "previousReg": "SK74AUA",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80189",
+        "reg": "SK25AYU",
+        "previousReg": "SK74AUH",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80186",
+        "reg": "SK25AYP",
+        "previousReg": "SK74AUC",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80198",
+        "reg": "SK25AZD",
+        "previousReg": "SK74AUV",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80187",
+        "reg": "SK25AYS",
+        "previousReg": "SK74AUE",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80190",
+        "reg": "SK25AYV",
+        "previousReg": "SK74AUJ",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80191",
+        "reg": "SK25AYW",
+        "previousReg": "SK74AUL",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80200",
+        "reg": "SK25AZG",
+        "previousReg": "SK74AUX",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80192",
+        "reg": "SK25AYX",
+        "previousReg": "SK74AUM",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80188",
+        "reg": "SK25AYT",
+        "previousReg": "SK74AUF",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80194",
+        "reg": "SK25AYZ",
+        "previousReg": "SK74AUO",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80196",
+        "reg": "SK25AZB",
+        "previousReg": "SK74AUT",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80201",
+        "reg": "SK25AZJ",
+        "previousReg": "SK74AUY",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80202",
+        "reg": "SK25AZL",
+        "previousReg": "SK74AVB",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80193",
+        "reg": "SK25AYY",
+        "previousReg": "SK74AUN",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80195",
+        "reg": "SK25AZA",
+        "previousReg": "SK74AUP",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80199",
+        "reg": "SK25AZF",
+        "previousReg": "SK74AUW",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80197",
+        "reg": "SK25AZC",
+        "previousReg": "SK74AUU",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80203",
+        "reg": "SK25AZN",
+        "previousReg": "SK74AVC",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80205",
+        "reg": "SK25AZP",
+        "previousReg": "SK74AVE",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80208",
+        "reg": "SK25AZU",
+        "previousReg": "SK74AVJ",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80209",
+        "reg": "SK25AZV",
+        "previousReg": "SK74AVL",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80207",
+        "reg": "SK25AZT",
+        "previousReg": "SK74AVG",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80204",
+        "reg": "SK25AZO",
+        "previousReg": "SK74AVD",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80206",
+        "reg": "SK25AZR",
+        "previousReg": "SK74AVF",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Western Buses/Stagecoach W Scotland",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80213",
+        "reg": "SK25AUU",
+        "previousReg": "-",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Fife Scottish",
+        "isonbustimes": "No"
+    },
+    {
+        "fleetNumber": "80217",
+        "reg": "SK25AUY",
+        "previousReg": "-",
+        "vehicleType": "ADL E400EV",
+        "livery": "Stagecoach Local",
+        "operator": "Fife Scottish",
+        "isonbustimes": "No"
     }
+]
+
 ]
 
