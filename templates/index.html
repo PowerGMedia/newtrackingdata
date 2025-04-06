@@ -123,67 +123,68 @@
         }
 
         async function searchFleet() {
-            if (fleetDatabase.length === 0) {
-                await loadFleets();
-            }
+    if (fleetDatabase.length === 0) {
+        await loadFleets();
+    }
 
-            const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
-            const resultDiv = document.getElementById("result");
+    const input = document.getElementById("fleetNumber").value.trim().toLowerCase();
+    const resultDiv = document.getElementById("result");
 
-            const matchingFleets = fleetDatabase.filter(item => 
-                item.fleetNumber.toLowerCase() === input || 
-                item.reg.toLowerCase() === input
-            );
+    const matchingFleets = fleetDatabase.filter(item => {
+        const fleetNum = item.fleetNumber?.toLowerCase?.();
+        const reg = item.reg?.toLowerCase?.();
+        return fleetNum === input || reg === input;
+    });
 
-            if (matchingFleets.length === 0) {
-                resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
-                return;
-            }
+    if (matchingFleets.length === 0) {
+        resultDiv.innerHTML = "<p style='color: red;'>Fleet not found.</p>";
+        return;
+    }
 
-            let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
+    let resultHTML = `<p><strong>Found ${matchingFleets.length} result(s)</strong></p>`;
 
-            if (matchingFleets.length > 1) {
-                resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
-                    <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
-                        <option value="">-- Choose an option --</option>`;
+    if (matchingFleets.length > 1) {
+        resultHTML += `<label for="fleetSelect">Select a Fleet:</label>
+            <select id="fleetSelect" onchange="displayFleetDetails(this.value)">
+                <option value="">-- Choose an option --</option>`;
 
-                matchingFleets.forEach((vehicle, index) => {
-                    resultHTML += `<option value="${index}">
-                        ${vehicle.fleetNumber} - ${vehicle.reg} (${vehicle.operator})
-                    </option>`;
-                });
+        matchingFleets.forEach((vehicle, index) => {
+            resultHTML += `<option value="${index}">
+                ${vehicle.fleetNumber ?? 'Unknown'} - ${vehicle.reg ?? 'Unknown'} (${vehicle.operator ?? 'Unknown'})
+            </option>`;
+        });
 
-                resultHTML += `</select>`;
-            }
+        resultHTML += `</select>`;
+    }
 
-            resultDiv.innerHTML = resultHTML;
+    resultDiv.innerHTML = resultHTML;
 
-            if (matchingFleets.length === 1) {
-                displayFleetDetails(0);
-            }
-        }
+    if (matchingFleets.length === 1) {
+        displayFleetDetails(0);
+    }
 
-        function displayFleetDetails(index) {
-            const resultDiv = document.getElementById("result");
-            const selectedFleet = fleetDatabase.filter(item => 
-                item.fleetNumber.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase() ||
-                item.reg.toLowerCase() === document.getElementById("fleetNumber").value.trim().toLowerCase()
-            )[index];
+    // Save matching for use in display
+    window.currentMatches = matchingFleets;
+}
 
-            if (!selectedFleet) return;
+function displayFleetDetails(index) {
+    const resultDiv = document.getElementById("result");
+    const selectedFleet = window.currentMatches?.[index];
 
-            resultDiv.innerHTML += `
-                <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber}</p>
-                <p><strong>Reg:</strong> ${selectedFleet.reg}</p>
-                <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg}</p>
-                <p><strong>Vehicle Type:</strong> ${selectedFleet.vehicleType}</p>
-                <p><strong>Livery:</strong> ${selectedFleet.livery}</p>
-                <p><strong>Operator:</strong> ${selectedFleet.operator}</p>
-                <br><br>
-                <p><strong>Is on Bus Times:</strong> ${selectedFleet.isonbustimes}</p>
-                <button onclick="showChangeForm('${selectedFleet.fleetNumber}', '${selectedFleet.reg}')">Request Change</button>
-            `;
-        }
+    if (!selectedFleet) return;
+
+    resultDiv.innerHTML += `
+        <p><strong>Fleet Number:</strong> ${selectedFleet.fleetNumber ?? 'N/A'}</p>
+        <p><strong>Reg:</strong> ${selectedFleet.reg ?? 'N/A'}</p>
+        <p><strong>Previous Reg:</strong> ${selectedFleet.previousReg ?? 'N/A'}</p>
+        <p><strong>Vehicle Type:</strong> ${selectedFleet.vehicleType ?? 'N/A'}</p>
+        <p><strong>Livery:</strong> ${selectedFleet.livery ?? 'N/A'}</p>
+        <p><strong>Operator:</strong> ${selectedFleet.operator ?? 'N/A'}</p>
+        <br><br>
+        <p><strong>Is on Bus Times:</strong> ${selectedFleet.isonbustimes ?? 'N/A'}</p>
+        <button onclick="showChangeForm('${selectedFleet.fleetNumber}', '${selectedFleet.reg}')">Request Change</button>
+    `;
+}
 
         function showChangeForm(fleetNumber, reg) {
             document.getElementById("request-change-form").style.display = "block";
